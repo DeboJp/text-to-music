@@ -8,12 +8,15 @@ import numpy as np
 with open("../data/vocab.json", "r") as f:
     vocab = json.load(f)
 
-# Model initialization
+with open("../data/training_params.json", "r") as f:
+    params = json.load(f)
+
+#model init
 model = TextToMusic(
     vocab_size=len(vocab),
-    embed_dim=16,
-    hidden_dim=32,
-    output_dim=200
+    embed_dim=params["embed_dim"],
+    hidden_dim=params["hidden_dim"],
+    output_dim=params["max_note_len"]
 )
 
 import os

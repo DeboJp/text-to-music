@@ -89,3 +89,11 @@ print("Saving model to:", os.path.abspath("../model.pth"))
 # Save vocabulary
 with open("../data/vocab.json", "w") as f:
     json.dump(vocab, f)
+
+training_params = {
+    "max_note_len": max_note_len,
+    "embed_dim": 16,
+    "hidden_dim": 32
+}
+with open("../data/training_params.json", "w") as f:
+    json.dump(training_params, f)

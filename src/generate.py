@@ -31,7 +31,7 @@ def text_to_sequence(text):
     return [vocab.get(word, vocab["<PAD>"]) for word in text.split()]
 
 # Generate music
-text_input = "calm and soothing melody"
+text_input = "tender and sweet lullaby"
 sequence = torch.tensor([text_to_sequence(text_input)])
 
 predicted_notes, predicted_durations = model(sequence)
@@ -41,3 +41,19 @@ predicted_durations = predicted_durations.detach().numpy().flatten()
 # Convert to list of tuples
 predicted_notes_with_durations = list(zip(predicted_notes,predicted_durations))
 generate_midi(predicted_notes_with_durations, "generated_music.mid")
+
+
+#PLAY
+
+# import pygame
+
+# # Initialize the mixer
+# pygame.mixer.init()
+
+# # Load and play the MIDI file
+# pygame.mixer.music.load("./generated_music.mid")
+# pygame.mixer.music.play()
+
+# # Wait until the music finishes
+# while pygame.mixer.music.get_busy():
+#     pass
